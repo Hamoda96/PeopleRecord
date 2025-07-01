@@ -8,18 +8,24 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
+// ViewModel for managing the user list screen state and business logic.
+// Handles loading users, user actions, and navigation events.
 class UsersViewModel(
     private val userUseCases: UserUseCases
 ) : ViewModel() {
 
+    // Holds the current list of users.
     private val _users = MutableStateFlow<List<User>>(emptyList())
     val users: StateFlow<List<User>> = _users.asStateFlow()
+    // Indicates whether a loading operation is in progress.
     private val _loading = MutableStateFlow(false)
     val loading: StateFlow<Boolean> = _loading.asStateFlow()
 
+    // Emits navigation events to the UI layer.
     private val _navigationEvent = MutableSharedFlow<UsersSideEffect>()
     val navigationEvent = _navigationEvent.asSharedFlow()
 
+    // Initializes the ViewModel by loading users.
     init {
         viewModelScope.launch {
             _loading.value = true
@@ -29,6 +35,7 @@ class UsersViewModel(
         }
     }
 
+    // Handles user actions/events such as loading, deleting, or navigating.
     fun onEvent(event: UsersEvent) {
         viewModelScope.launch {
             when (event) {
@@ -50,32 +57,10 @@ class UsersViewModel(
             }
         }
     }
-
-    private fun observeUsers() {
-        viewModelScope.launch {
-            userUseCases.getUsers()
-                .onEach { _users.value = it }
-                .launchIn(this)
-        }
-    }
-
-    private fun deleteUserById(id: Int) {
-        viewModelScope.launch {
-            _loading.value = true
-            userUseCases.deleteUserById(id)
-            _loading.value = false
-        }
-    }
-
-    private fun deleteAllUsers() {
-        viewModelScope.launch {
-            _loading.value = true
-            userUseCases.deleteAll()
-            _loading.value = false
-        }
-    }
 }
 
+// Represents navigation events that can be emitted by the UsersViewModel.
 sealed class UsersSideEffect {
+    // Navigation event to navigate to the add user screen.
     object NavigateToAddUser : UsersSideEffect()
 }

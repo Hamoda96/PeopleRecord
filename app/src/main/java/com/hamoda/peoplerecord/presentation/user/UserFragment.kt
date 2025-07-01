@@ -19,20 +19,27 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
+// Fragment responsible for displaying the user screen.
+// Supports both Compose and XML-based UI, and handles navigation and view model interaction.
 class UserFragment : Fragment() {
 
+    // Injected ViewModel for managing user data and UI logic.
     private val viewModel: UserViewModel by inject()
+    // Determines which UI type to display (Compose or XML).
     private var viewType: String = "compose"
+    // View binding for XML layout.
     private var _binding: UserFragmentBinding? = null
+    // Getter for the view binding, ensuring it's not null.
     private val binding get() = _binding!!
 
+    // Initializes the fragment and reads the view type argument.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewType = arguments?.getString("view_type") ?: return
             this@UserFragment.viewType = viewType
-
     }
 
+    // Inflates the UI based on the selected view type (Compose or XML).
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,7 +53,7 @@ class UserFragment : Fragment() {
         }
     }
 
-
+    // Observes navigation events and navigates when triggered by the ViewModel.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -64,6 +71,7 @@ class UserFragment : Fragment() {
         }
     }
 
+    // Releases the view binding when the view is destroyed.
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

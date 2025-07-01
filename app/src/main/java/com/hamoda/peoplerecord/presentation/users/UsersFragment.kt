@@ -22,18 +22,25 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import kotlin.getValue
 
+// Fragment responsible for displaying the list of users.
+// Supports both Compose and XML-based UI, and handles user interaction and navigation.
 class UsersFragment : Fragment() {
 
+    // Injected ViewModel for managing users data and UI logic.
     private val viewModel: UsersViewModel by inject()
+    // Determines which UI type to display (Compose or XML).
     private var viewType = "compose"
+    // Holds the root view or binding for the fragment.
     private lateinit var binding: View
 
+    // Initializes the fragment and reads the view type argument.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewType = arguments?.getString("view_type") ?: return
         this@UsersFragment.viewType = viewType
     }
 
+    // Inflates the UI based on the selected view type (Compose or XML).
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,6 +66,7 @@ class UsersFragment : Fragment() {
         }
     }
 
+    // Observes navigation events and navigates when triggered by the ViewModel.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
