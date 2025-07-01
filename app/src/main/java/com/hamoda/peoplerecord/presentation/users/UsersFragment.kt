@@ -25,12 +25,13 @@ import kotlin.getValue
 class UsersFragment : Fragment() {
 
     private val viewModel: UsersViewModel by inject()
-    private var useCompose = false
+    private var viewType = "compose"
     private lateinit var binding: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Optionally restore useCompose from savedInstanceState
+        val viewType = arguments?.getString("view_type") ?: return
+        this@UsersFragment.viewType = viewType
     }
 
     override fun onCreateView(
@@ -38,7 +39,7 @@ class UsersFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        if (useCompose) {
+        if (viewType.lowercase().trim() == "compose") {
             return ComposeView(requireContext()).apply {
                 setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
                 setContent {
@@ -67,7 +68,7 @@ class UsersFragment : Fragment() {
                     when (event) {
                         UsersSideEffect.NavigateToAddUser -> {
                             val request = NavDeepLinkRequest.Builder
-                                .fromUri("android-app://com.peoplerecord/userfragment/".toUri())
+                                .fromUri("android-app://com.peoplerecord/userfragment/${viewType}".toUri())
                                 .build()
 
                             findNavController().navigate(request, navOptions {

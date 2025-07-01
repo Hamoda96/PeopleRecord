@@ -2,18 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/userFragment">
+    app:startDestination="@id/entryFragment">
+
+    <fragment
+        android:id="@+id/entryFragment"
+        android:name="com.hamoda.peoplerecord.presentation.entry.EntryFragment"
+        android:label="EntryFragment" />
 
     <fragment
         android:id="@+id/userFragment"
         android:name="com.hamoda.peoplerecord.presentation.user.UserFragment"
         android:label="UserFragment" >
-        <deepLink app:uri="android-app://com.peoplerecord/userfragment/" />
+        <deepLink app:uri="android-app://com.peoplerecord/userfragment/{view_type}" />
     </fragment>
     <fragment
         android:id="@+id/usersFragment"
         android:name="com.hamoda.peoplerecord.presentation.users.UsersFragment"
         android:label="UsersFragment" >
-        <deepLink app:uri="android-app://com.peoplerecord/usersfragment/" />
+        <deepLink app:uri="android-app://com.peoplerecord/usersfragment/{view_type}" />
     </fragment>
 </navigation>
