@@ -52,7 +52,7 @@ peopleRecord is an Android application designed to manage personal information. 
 ### Screenshots
 
 #### Compose Implementation
-<img src="https://drive.google.com/file/d/1rFqC5JHHNsn4QlCJ4UHJ3_D4WhuBn1hj/view?usp=sharing" width="400" alt="Compose Info Screen">
+<img src="https://drive.google.com/file/d/1rFqC5JHHNsn4QlCJ4UHJ3_D4WhuBn1hj/view?usp=drive_link" width="400" alt="Compose Info Screen">
 
 #### XML Implementation
 <img src="https://drive.google.com/file/d/1Rq1IKzr-wlRpYiQTFcxpeqlR0fnzt732/view?usp=sharing" width="400" alt="XML Info Screen">
