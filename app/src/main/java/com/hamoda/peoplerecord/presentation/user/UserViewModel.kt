@@ -67,6 +67,31 @@ class UserViewModel(
         userValidationError = validationUser
     }
 
+    fun validateUserField(field: String, value: String): String? {
+        return when (field) {
+            "name" -> validateUserInput(value, "1", "12345", "Male").nameError
+            "age" -> validateUserInput("Valid Name", value, "12345", "Male").ageError
+            "jobTitle" -> validateUserInput("Valid Name", "1", value, "Male").jobTitleError
+            else -> null
+        }
+    }
+
+    fun clearNameError() {
+        userValidationError = userValidationError.copy(nameError = null)
+    }
+
+    fun clearAgeError() {
+        userValidationError = userValidationError.copy(ageError = null)
+    }
+
+    fun clearJobTitleError() {
+        userValidationError = userValidationError.copy(jobTitleError = null)
+    }
+
+    fun clearGenderError() {
+        userValidationError = userValidationError.copy(genderError = null)
+    }
+
     fun skipToUsers() {
         viewModelScope.launch {
             _navigationEvent.emit(UserSideEffect.NavigateToUserList)

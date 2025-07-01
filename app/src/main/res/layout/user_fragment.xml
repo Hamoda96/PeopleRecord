@@ -25,8 +25,11 @@
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
             android:hint="Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:background="@drawable/edittext_selector_background" />
 
         <TextView
             android:id="@+id/tvNameError"
@@ -41,8 +44,11 @@
             android:id="@+id/etAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:hint="Age"
-            android:inputType="number" />
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:background="@drawable/edittext_selector_background" />
 
         <TextView
             android:id="@+id/tvAgeError"
@@ -57,8 +63,11 @@
             android:id="@+id/etJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:hint="Job Title"
-            android:inputType="text" />
+            android:layout_marginTop="10dp"
+            android:inputType="text"
+            android:background="@drawable/edittext_selector_background" />
 
         <TextView
             android:id="@+id/tvJobError"
@@ -72,8 +81,11 @@
         <Spinner
             android:id="@+id/genderSpinner"
             android:autofillHints="Gender"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_selector_background" />
 
         <TextView
             android:id="@+id/tvGenderError"
@@ -88,13 +100,25 @@
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:text="Save"
+            android:background="@drawable/blue_button_background"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="8dp"
+            android:elevation="2dp" />
 
         <!-- Skip Button -->
         <Button
             android:id="@+id/btnSkip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Skip" />
+            android:text="Skip"
+            android:background="@drawable/blue_button_background"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="8dp"
+            android:elevation="2dp" />
     </LinearLayout>
 </ScrollView>

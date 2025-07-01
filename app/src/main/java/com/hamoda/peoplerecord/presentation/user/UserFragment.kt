@@ -28,7 +28,7 @@ class UserFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        useCompose = false
+        useCompose = true
     }
 
     override fun onCreateView(
