@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.hamoda.peoplerecord.presentation.user
+package com.hamoda.peoplerecord.presentation.user.compose
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

@@ -1,4 +1,4 @@
-package com.hamoda.peoplerecord.presentation.users
+package com.hamoda.peoplerecord.presentation.users.compose
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
