@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PeopleRecord</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="age">age : %1$d</string>
+    <string name="gender">Gender : %1$s</string>
+    <string name="delete_all">Delete All</string>
+    <string name="skip">Skip</string>
+</resources>
